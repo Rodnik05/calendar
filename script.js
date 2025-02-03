@@ -1,6 +1,7 @@
 let firstDate = new Date(2025, 0, 1); // Start from February 1, 2025
-let window_size = 21
-let window_slide_increase = 1
+let window_slide_increase = 1;
+let days_in_column;
+let window_size = 21;
 
 const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -66,23 +67,28 @@ function isTheBegginingOfTheYear(date) {
     return isTheBegginingOfTheMonth(date) && date.getMonth() == 0
 }
 
-function setGridColumns(newColumnCount) {
+function setDaysInRow(newColumnCount) {
     document.documentElement.style.setProperty('--grid-columns', newColumnCount.toString());
-    document.getElementById('gridSize').textContent = `Days in one line: ${newColumnCount}`;
+    document.getElementById('daysInRow').textContent = `Days in one line: ${newColumnCount}`;
+    window_size = getDaysInRow() * getDaysInColumn();
+    renderCalendar();
 }
 
-function getGridColumns() {
+function getDaysInRow() {
     return parseInt(document.documentElement.style.getPropertyValue('--grid-columns'), 10);
 }
 
-function getWindowSize() {
-    return window_size
+function getDaysInColumn() {
+    return days_in_column
 }
 
-function setWindowSize(new_window_size) {
-    window_size = new_window_size
-    document.getElementById('windowSize').textContent = `Days in one column: ${newColumnCount}`;
+function setDaysInColumn(new_days_in_column) {
+    days_in_column = new_days_in_column
+    document.getElementById('daysInColumn').textContent = `Days in one column: ${days_in_column}`;
+    window_size = getDaysInRow() * getDaysInColumn();
+    renderCalendar();
 }
 // Initial render
 renderCalendar();
-setGridColumns(7);
+setDaysInRow(7);
+setDaysInColumn(3);
