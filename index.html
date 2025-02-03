@@ -4,146 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Календарь</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }
-        .calendar {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            background: white;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #cc2f04e2;
-            color: white;
-        }
-        header button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-        }
-        header h2 {
-            margin: 0;
-        }
-        main {
-            flex-grow: 1;
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 1px;
-            background-color: #ddd;
-        }
-        .calendar-day {
-            background: white;
-            padding: 10px;
-            min-height: 80px;
-            position: relative;
-            border-radius: 3px;
-        }
-        .calendar-day:hover {
-            background-color: #f0f0f0;
-        }
-        .calendar-day-header {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .calendar-day-number {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 12px;
-            color: #888;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #cc2f04e2;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="calendar">
         <header>
-            <button onclick="prevMonth()">&#9664;</button>
+            <button onclick="slidePrev()">&#9664; Назад</button>
             <h2 id="monthYear">Февраль 2025</h2>
-            <button onclick="nextMonth()">&#9654;</button>
+            <button onclick="">Вперёд </button>
+            <button onclick="slideNext()">Вперёд &#9654;</button>
         </header>
         <main>
-            <div class="calendar-day"><div class="calendar-day-header">Пн</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Вт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Ср</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Чт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Пт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Сб</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Вс</div></div>
-            <!-- Пример дней месяца -->
-            <div class="calendar-day"><div class="calendar-day-header">Пн</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Вт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Ср</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Чт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Пт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Сб</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Вс</div></div>
-            <!-- Пример дней месяца -->
-            <div class="calendar-day"><div class="calendar-day-header">Пн</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Вт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Ср</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Чт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Пт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Сб</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Вс</div></div>
-            <!-- Пример дней месяца -->
-            <div class="calendar-day"><div class="calendar-day-header">Пн</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Вт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Ср</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Чт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Пт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Сб</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Вс</div></div>
-            <!-- Пример дней месяца -->
-            <div class="calendar-day"><div class="calendar-day-header">Пн</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Вт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Ср</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Чт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Пт</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Сб</div></div>
-            <div class="calendar-day"><div class="calendar-day-header">Вс</div></div>
-        
         </main>
         <footer>
             © 2025 Календарь
         </footer>
     </div>
 
-    <script>
-        // Пример функций для переключения месяцев
-        let currentMonth = 1; // Февраль
-
-        function renderCalendar(month) {
-            const monthYearElement = document.getElementById('monthYear');
-            monthYearElement.textContent = `Февраль ${2025}`; // Обновите для текущего месяца
-            // Здесь добавьте логику для отображения дней месяца
-        }
-
-        function prevMonth() {
-            currentMonth--;
-            renderCalendar(currentMonth);
-        }
-
-        function nextMonth() {
-            currentMonth++;
-            renderCalendar(currentMonth);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
