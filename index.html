@@ -9,10 +9,12 @@
 <body>
     <div class="calendar">
         <header>
-            <button onclick="slidePrev()">&#9664; Назад</button>
-            <h2 id="monthYear">Февраль 2025</h2>
-            <button onclick="">Вперёд </button>
-            <button onclick="slideNext()">Вперёд &#9654;</button>
+            <button onclick="slidePrev()">&#9664; Previous</button>
+            <h2 id="monthYear"></h2>
+            <button id="gridIncrease"onclick="setGridColumns(getGridColumns() + 1)">+</button>
+            <h2 id="gridSize"></h2>
+            <button id="gridDecrease"onclick="setGridColumns(getGridColumns() - 1)">-</button>
+            <button onclick="slideNext()">Next &#9654;</button>
         </header>
         <main>
         </main>

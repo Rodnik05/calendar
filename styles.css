@@ -10,6 +10,15 @@ body, html {
     height: 100vh;
     background: white;
 }
+:root {
+    --grid-columns: 7; /* Default value */
+}
+
+@media (max-width: 600px) {
+    :root {
+        --grid-columns: 2; /* Change to 2 columns on small screens */
+    }
+}
 header {
     display: flex;
     justify-content: space-between;
@@ -31,7 +40,7 @@ header h2 {
 main {
     flex-grow: 1;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
     gap: 1px;
     background-color: #ddd;
 }
@@ -45,7 +54,7 @@ main {
 .calendar-day:hover {
     background-color: #f0f0f0;
 }
-.calendar-day-header {
+.calendar-day-name {
     font-weight: bold;
     margin-bottom: 5px;
 }
