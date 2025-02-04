@@ -3,6 +3,7 @@ body, html {
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
+    height: 100vh; /* Full height of the viewport */
 }
 .calendar {
     display: flex;
@@ -24,7 +25,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #cc2f04e2;
+    background-color: #0454cce2;
     color: white;
 }
 header button {
@@ -67,7 +68,27 @@ main {
 }
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 2px;
     background-color: #cc2f04e2;
     color: white;
+}
+
+.overlay-button {
+    position: fixed; /* Fixed positioning allows it to stay in view */
+    bottom: 20px; /* Distance from the bottom of the viewport */
+    right: 20px; /* Distance from the left of the viewport */
+    width: 50px; /* Width of the button */
+    height: 50px; /* Height of the button */
+    background-color: rgb(80, 124, 255); /* Button color */
+    border-radius: 50%; /* Circular shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    cursor: pointer; /* Pointer on hover */
+}
+
+.plus-sign {
+    font-size: 24px; /* Size of the plus sign */
+    color: white; /* Color of the plus sign */
 }
