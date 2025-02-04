@@ -2,6 +2,10 @@ let firstDate = new Date(2025, 0, 1); // Start from February 1, 2025
 let window_slide_increase = 1;
 let days_in_column;
 let window_size = 21;
+const max_days_in_column = 5;
+const max_days_in_row = 14;
+const min_days_in_column = 0;
+const min_days_in_row = 0;
 
 const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -71,8 +75,14 @@ function isTheBegginingOfTheYear(date) {
 }
 
 function setDaysInRow(newColumnCount) {
-    document.documentElement.style.setProperty('--grid-columns', newColumnCount.toString());
-    document.getElementById('daysInRow').textContent = `Days in one line: ${newColumnCount}`;
+    var new_days_in_row = newColumnCount;
+    if (new_days_in_row >= max_days_in_row) {
+        new_days_in_row = max_days_in_row;
+    } else if (new_days_in_row <= min_days_in_row) {
+        new_days_in_row = min_days_in_row;
+    }
+    document.documentElement.style.setProperty('--grid-columns', new_days_in_row.toString());
+    document.getElementById('daysInRow').textContent = `Days in one line: ${new_days_in_row}`;
     window_size = getDaysInRow() * getDaysInColumn();
     renderCalendar();
 }
@@ -81,16 +91,23 @@ function getDaysInRow() {
     return parseInt(document.documentElement.style.getPropertyValue('--grid-columns'), 10);
 }
 
-function getDaysInColumn() {
-    return days_in_column
-}
-
 function setDaysInColumn(new_days_in_column) {
-    days_in_column = new_days_in_column
+    if (new_days_in_column >= max_days_in_column) {
+        days_in_column = max_days_in_column;
+    } else if (new_days_in_column <= min_days_in_column) {
+        days_in_column = min_days_in_column;
+    } else {
+        days_in_column = new_days_in_column;
+    }
     document.getElementById('daysInColumn').textContent = `Days in one column: ${days_in_column}`;
     window_size = getDaysInRow() * getDaysInColumn();
     renderCalendar();
 }
+
+function getDaysInColumn() {
+    return days_in_column
+}
+
 // Initial render
 renderCalendar();
 setDaysInRow(7);
