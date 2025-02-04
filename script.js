@@ -47,13 +47,30 @@ function renderCalendar() {
         }   
         mainElement.appendChild(dayElement);
     }
+    updateMonthYear(firstDate, window_size);
+}
+
+
+function updateMonthYear(firstDate, window_size) {
     let lastDate = new Date(firstDate);
     lastDate.setDate(firstDate.getDate() + window_size - 1);
 
-    // Update the month and year in the header
-    const monthYearElement = document.getElementById('monthYear');
-    monthYearElement.textContent = `${firstDate.getDate()} ${monthNames[firstDate.getMonth()]} ${firstDate.getFullYear()} - 
-    ${lastDate.getDate()} ${monthNames[lastDate.getMonth()]} ${lastDate.getFullYear()}`;
+    // Get the elements
+    const firstDateButton = document.getElementById('firstDateButton');
+    const lastDateButton = document.getElementById('lastDateButton');
+
+    // Update the text of the buttons
+    firstDateButton.textContent = `${firstDate.getDate()} ${monthNames[firstDate.getMonth()]} ${firstDate.getFullYear()}`;
+    lastDateButton.textContent = `${lastDate.getDate()} ${monthNames[lastDate.getMonth()]} ${lastDate.getFullYear()}`;
+
+    // Add event listeners to the buttons
+    firstDateButton.onclick = () => {
+        alert(`First Date: ${firstDate.toDateString()}`); // Replace with your logic
+    };
+
+    lastDateButton.onclick = () => {
+        alert(`Last Date: ${lastDate.toDateString()}`); // Replace with your logic
+    };
 }
 
 function slideNext() {

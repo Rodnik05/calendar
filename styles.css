@@ -184,6 +184,9 @@ footer {
     margin: 0;
     font-size: 24px;
     color: #333;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between the buttons and separator */
 }
 
 .value {
@@ -192,3 +195,26 @@ footer {
     color: #555;
 }
 
+
+
+
+.date-button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.date-button:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Light hover effect */
+}
+
+.separator {
+    font-size: 20px;
+    color: #333;
+}
