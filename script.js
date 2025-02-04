@@ -43,10 +43,13 @@ function renderCalendar() {
         }   
         mainElement.appendChild(dayElement);
     }
+    let lastDate = new Date(firstDate);
+    lastDate.setDate(firstDate.getDate() + window_size - 1);
 
     // Update the month and year in the header
     const monthYearElement = document.getElementById('monthYear');
-    monthYearElement.textContent = `${monthNames[firstDate.getMonth()]} ${firstDate.getFullYear()}`;
+    monthYearElement.textContent = `${firstDate.getDate()} ${monthNames[firstDate.getMonth()]} ${firstDate.getFullYear()} - 
+    ${lastDate.getDate()} ${monthNames[lastDate.getMonth()]} ${lastDate.getFullYear()}`;
 }
 
 function slideNext() {

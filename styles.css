@@ -48,7 +48,9 @@ main {
     margin: 15px;
     border-radius: 3px;
     border: 1px solid #ddd;
+    margin-bottom: 40px;
 }
+
 .calendar-day {
     background: white;
     padding: 10px;
@@ -70,7 +72,21 @@ main {
     font-size: 12px;
     color: #888;
 }
+
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-bottom: 2px solid #ddd;
+}
+
 footer {
+    border-top: 2px solid #ddd;
+    padding: 2px;
+    font-size: 10px;
     position: fixed;
     left: 0;
     bottom: 0; /* Positions it at the bottom */
@@ -101,15 +117,6 @@ footer {
 }
 
 
-.calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #5582fd;
-    border-bottom: 2px solid #ddd;
-}
-
 .nav-button {
     background-color: #007bff;
     color: white;
@@ -134,23 +141,43 @@ footer {
     display: flex;
     align-items: center;
     gap: 10px;
-    /* width: 10px;
-    height: 10px; */
 }
 
-
 .control-button {
-    background-color: #95c8ff;
-    color: white;
+    background-color: #28a745;
+    color: rgb(255, 255, 255);
     border: none;
-    padding: 8px 12px;
+    padding: 8px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .control-button:hover {
-    background-color: #2184ed;
+    background-color: #218838;
+}
+
+.icon-button {
+    width: 32px; /* Fixed width for icon buttons */
+    height: 32px; /* Fixed height for icon buttons */
+}
+
+.icon-minus::before,
+.icon-plus::before {
+    font-family: "Font Awesome 5 Free"; /* Use Font Awesome or any other icon library */
+    font-weight: 900;
+    font-size: 16px;
+}
+
+.icon-minus::before {
+    content: "\f068"; /* Unicode for minus icon in Font Awesome */
+}
+
+.icon-plus::before {
+    content: "\f067"; /* Unicode for plus icon in Font Awesome */
 }
 
 .title {
@@ -164,3 +191,4 @@ footer {
     font-size: 20px;
     color: #555;
 }
+
