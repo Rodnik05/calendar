@@ -218,3 +218,76 @@ footer {
     font-size: 20px;
     color: #333;
 }
+
+
+
+.move-by-container {
+    position: relative;
+    display: inline-block;
+}
+
+.move-by-display {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: #333;
+}
+
+.slider-dropdown {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Ensure the rangeslider.js container doesn't break the layout */
+.rangeslider {
+    margin: 10px 0;
+    width: 150px; /* Adjust width as needed */
+}
+
+/* Style the rangeslider.js handle */
+.rangeslider__handle {
+    width: 20px;
+    height: 20px;
+    background-color: #007bff;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the rangeslider.js fill */
+.rangeslider__fill {
+    background-color: #007bff;
+}
+
+.slider-dropdown {
+    display: none;
+    position: absolute;
+    background: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+  
+  #moveBySlider {
+    width: 180px;
+    margin: 10px 0;
+  }
+  
+  .value-display {
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+  }

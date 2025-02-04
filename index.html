@@ -6,12 +6,16 @@
     <title>Календарь</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.min.css">
+
+    <!-- rangeslider.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.min.js"></script>
 </head>
 <body>
     <div class="calendar">
 
         <header class="calendar-header">
-            <button class="nav-button" onclick="slidePrev()">&#9664; Previous</button>
+            
             <div class="control-group">
                 <div id="monthYear" class="title">
                     <button id="firstDateButton" class="date-button"></button>
@@ -19,7 +23,22 @@
                     <button id="lastDateButton" class="date-button"></button>
                 </div>
             </div>
-            <button class="nav-button" onclick="slideNext()">Next &#9654;</button>
+
+            
+
+            <button class="nav-button" onclick="slidePrev()">&#9664;</button>
+
+            <div class="move-by-container">
+                <div class="move-by-display" onclick="toggleSlider()">
+                  move by: <span id="moveByValue">1</span>
+                </div>
+                <div id="sliderDropdown" class="slider-dropdown">
+                  <input type="range" id="moveBySlider" min="1" max="28" value="1">
+                  <div class="value-display">Current: <span id="currentValue">1</span></div>
+                </div>
+              </div>
+
+            <button class="nav-button" onclick="slideNext()">&#9654;</button>
 
             <div class="controls-container">
                 

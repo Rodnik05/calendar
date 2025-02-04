@@ -1,7 +1,5 @@
 let firstDate = new Date(2025, 0, 1); // Start from February 1, 2025
 let window_slide_increase = 1;
-let days_in_column;
-let window_size = 21;
 const max_days_in_column = 5;
 const max_days_in_row = 14;
 const min_days_in_column = 0;
@@ -12,13 +10,47 @@ const monthNames = [
     'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
+setDaysInRow(7);
+setDaysInColumn(3);
+
+
+const slider = document.getElementById('moveBySlider');
+const valueDisplay_c = document.getElementById('moveByValue');
+const currentValue_c = document.getElementById('currentValue');
+const dropdown = document.getElementById('sliderDropdown');
+
+// Real-time value updates [1][7]
+slider.addEventListener('input', (e) => {
+    valueDisplay_c.textContent = e.target.value;
+    currentValue_c.textContent = e.target.value;
+});
+
+// Toggle dropdown with click tracking [4]
+function toggleSlider() {
+  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+// Close dropdown on outside click [4][6]
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.move-by-container') && !e.target.closest('.slider-dropdown')) {
+    dropdown.style.display = 'none';
+  }
+});
+
+// Final value confirmation [6]
+slider.addEventListener('change', (e) => {
+    setWindowSlideIncrease(parseInt(e.target.value));
+});
+
+renderCalendar();
+
 function renderCalendar() {
     const mainElement = document.querySelector('main');
     mainElement.innerHTML = ''; // Clear the current calendar
 
     // Add the day headers (Пн, Вт, Ср, etc.)
     const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-
+    var window_size = getWindowSize();
     // Add the days of the month
     for (let i = 0; i < window_size; i++) {
         const dayElement = document.createElement('div');
@@ -74,12 +106,12 @@ function updateMonthYear(firstDate, window_size) {
 }
 
 function slideNext() {
-    firstDate.setDate(firstDate.getDate() + 1); // Move to the next day
+    firstDate.setDate(firstDate.getDate() + window_slide_increase); // Move to the next day
     renderCalendar();
 }
 
 function slidePrev() {
-    firstDate.setDate(firstDate.getDate() - 1); // Move to the previous day
+    firstDate.setDate(firstDate.getDate() - window_slide_increase); // Move to the previous day
     renderCalendar();
 }
 
@@ -100,7 +132,9 @@ function setDaysInRow(newColumnCount) {
     }
     document.documentElement.style.setProperty('--grid-columns', new_days_in_row.toString());
     document.getElementById('daysInRow').textContent = `Days in one line: ${new_days_in_row}`;
-    window_size = getDaysInRow() * getDaysInColumn();
+
+    console.log(`getDaysInRow() in setDaysInRow = ${getDaysInRow()}`);
+    updateValues();
     renderCalendar();
 }
 
@@ -109,6 +143,7 @@ function getDaysInRow() {
 }
 
 function setDaysInColumn(new_days_in_column) {
+    var days_in_column;
     if (new_days_in_column >= max_days_in_column) {
         days_in_column = max_days_in_column;
     } else if (new_days_in_column <= min_days_in_column) {
@@ -116,16 +151,45 @@ function setDaysInColumn(new_days_in_column) {
     } else {
         days_in_column = new_days_in_column;
     }
+    localStorage.setItem('days_in_column', JSON.stringify(days_in_column));
     document.getElementById('daysInColumn').textContent = `Days in one column: ${days_in_column}`;
-    window_size = getDaysInRow() * getDaysInColumn();
+
+    console.log(`getDaysInColumn() in setDaysInColumn = ${getDaysInColumn()}`);
+    updateValues();
     renderCalendar();
 }
 
 function getDaysInColumn() {
-    return days_in_column
+    const stored = localStorage.getItem('days_in_column');
+    return stored !== null ? JSON.parse(stored) : 3;
 }
 
-// Initial render
-renderCalendar();
-setDaysInRow(7);
-setDaysInColumn(3);
+function getWindowSize() {
+    return getDaysInColumn() * getDaysInRow();
+}
+
+function getWindowSlideIncrease() {
+    return window_slide_increase;
+}
+
+function setWindowSlideIncrease(new_window_slide_increase){
+    window_slide_increase = new_window_slide_increase;
+}
+
+function updateValues() {
+    var window_size = getDaysInColumn() * getDaysInRow();
+    console.log(`window_size in updateValues = ${window_size}`);
+    const slider = document.getElementById("moveBySlider");
+    slider.max = window_size;
+    var valueDisplay = document.getElementById('moveByValue');
+    var currentValue = document.getElementById('currentValue');
+    console.log(`valueDisplay in updateValues = ${parseInt(valueDisplay.textContent)}`);
+    console.log(`currentValue in updateValues = ${parseInt(currentValue.textContent)}`);
+    console.log(`valueDisplay in updateValues = ${(Math.min(parseInt(valueDisplay.textContent), window_size))}`);
+    console.log(`currentValue in updateValues = ${(Math.min(parseInt(currentValue.textContent), window_size))}`);   
+    
+    valueDisplay.textContent = Math.min(parseInt(valueDisplay.textContent), window_size).toString();
+    currentValue.textContent = Math.min(parseInt(currentValue.textContent), window_size).toString();
+    console.log(`valueDisplay in updateValues = ${(Math.min(parseInt(valueDisplay.textContent), window_size))}`);
+    console.log(`currentValue in updateValues = ${(Math.min(parseInt(currentValue.textContent), window_size))}`);
+}
