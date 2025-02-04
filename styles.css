@@ -18,7 +18,7 @@ body, html {
 
 @media (max-width: 600px) {
     :root {
-        --grid-columns: 2; /* Change to 2 columns on small screens */
+        --grid-columns: 1; /* Change to 2 columns on small screens */
     }
 }
 header {
