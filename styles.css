@@ -99,3 +99,68 @@ footer {
     font-size: 24px; /* Size of the plus sign */
     color: white; /* Color of the plus sign */
 }
+
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #5582fd;
+    border-bottom: 2px solid #ddd;
+}
+
+.nav-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.nav-button:hover {
+    background-color: #0056b3;
+}
+
+.controls-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* width: 10px;
+    height: 10px; */
+}
+
+
+.control-button {
+    background-color: #95c8ff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.control-button:hover {
+    background-color: #2184ed;
+}
+
+.title {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.value {
+    margin: 0;
+    font-size: 20px;
+    color: #555;
+}
