@@ -2,8 +2,8 @@ let firstDate = new Date(2025, 0, 1); // Start from February 1, 2025
 let window_slide_increase = 1;
 const max_days_in_column = 5;
 const max_days_in_row = 14;
-const min_days_in_column = 0;
-const min_days_in_row = 0;
+const min_days_in_column = 1;
+const min_days_in_row = 1;
 
 const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -188,8 +188,8 @@ function updateValues() {
     console.log(`valueDisplay in updateValues = ${(Math.min(parseInt(valueDisplay.textContent), window_size))}`);
     console.log(`currentValue in updateValues = ${(Math.min(parseInt(currentValue.textContent), window_size))}`);   
     
-    valueDisplay.textContent = Math.min(parseInt(valueDisplay.textContent), window_size).toString();
-    currentValue.textContent = Math.min(parseInt(currentValue.textContent), window_size).toString();
-    console.log(`valueDisplay in updateValues = ${(Math.min(parseInt(valueDisplay.textContent), window_size))}`);
-    console.log(`currentValue in updateValues = ${(Math.min(parseInt(currentValue.textContent), window_size))}`);
+    valueDisplay.textContent = Math.max(Math.min(parseInt(valueDisplay.textContent), window_size).toString(), 1);
+    currentValue.textContent = Math.max(Math.min(parseInt(currentValue.textContent), window_size).toString(), 1);
+    console.log(`valueDisplay in updateValues = ${Math.max(Math.min(parseInt(valueDisplay.textContent), window_size))}`);
+    console.log(`currentValue in updateValues = ${Math.max(Math.min(parseInt(currentValue.textContent), window_size))}`);
 }
