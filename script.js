@@ -19,25 +19,25 @@ const valueDisplay_c = document.getElementById('moveByValue');
 const currentValue_c = document.getElementById('currentValue');
 const dropdown = document.getElementById('sliderDropdown');
 
-// Real-time value updates [1][7]
+// Real-time value updates
 slider.addEventListener('input', (e) => {
     valueDisplay_c.textContent = e.target.value;
     currentValue_c.textContent = e.target.value;
 });
 
-// Toggle dropdown with click tracking [4]
+// Toggle dropdown with click tracking
 function toggleSlider() {
   dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
 }
 
-// Close dropdown on outside click [4][6]
+// Close dropdown on outside click
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.move-by-container') && !e.target.closest('.slider-dropdown')) {
     dropdown.style.display = 'none';
   }
 });
 
-// Final value confirmation [6]
+// Final value confirmation
 slider.addEventListener('change', (e) => {
     setWindowSlideIncrease(parseInt(e.target.value));
 });
