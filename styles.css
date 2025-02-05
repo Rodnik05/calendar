@@ -204,10 +204,15 @@ footer {
     color: inherit;
     font-size: inherit;
     font-family: inherit;
+    font-size: medium;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 5px 10px; /* Padding can be adjusted as needed */
     border-radius: 5px;
     transition: background-color 0.3s ease;
+
+    /* Set fixed width and height */
+    width: 170px;   /* Adjust to desired width */
+    height: 40px;   /* Adjust to desired height */
 }
 
 .date-button:hover {
