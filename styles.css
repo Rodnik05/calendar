@@ -195,8 +195,15 @@ footer {
     color: #555;
 }
 
+.days-in-row {
+    width: 190px;  
+    height: 25px; 
+}
 
-
+.days-in-column {
+    width: 220px;  
+    height: 25px; 
+}
 
 .date-button {
     background: none;
