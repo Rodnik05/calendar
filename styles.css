@@ -356,3 +356,8 @@ footer {
 .submit-btn:hover {
     background-color: #0056b3;
 }
+
+
+textarea {
+    resize: none;
+  }
