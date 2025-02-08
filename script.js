@@ -25,6 +25,49 @@ slider.addEventListener('input', (e) => {
     currentValue_c.textContent = e.target.value;
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Your existing JavaScript code here
+    const modal = document.getElementById('eventModal');
+    const overlayBtn = document.querySelector('.overlay-button');
+    const span = document.querySelector('.close');
+
+    // Event listeners for modal
+    overlayBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+        document.getElementById('eventDate').valueAsDate = new Date();
+    });
+
+    span.onclick = () => {
+        modal.style.display = 'none';
+    }
+
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Handle form submission
+    document.getElementById('eventForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const eventData = {
+            title: document.getElementById('eventTitle').value,
+            date: document.getElementById('eventDate').value,
+            time: document.getElementById('eventTime').value,
+            description: document.getElementById('eventDescription').value
+        };
+        
+        // Here you can add code to save the event and display it in the calendar
+        console.log('New event:', eventData);
+        alert('Event added successfully!');
+        modal.style.display = 'none';
+        
+        // Reset form
+        document.getElementById('eventForm').reset();
+    });
+});
+
 // Toggle dropdown with click tracking
 function toggleSlider() {
   dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
