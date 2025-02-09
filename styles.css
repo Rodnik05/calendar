@@ -231,15 +231,17 @@ footer {
     color: #333;
 }
 
-
-.move-by-container {
+.move-by-group {
     display: flex;
     align-items: center;
     gap: 10px;
-    /* display: flex;
+}
+
+.move-by-container {
+    display: flex;
     position: relative;
     display: inline-block;
-    gap: 10px; */
+    gap: 10px;
 }
 
 .move-by-display {
