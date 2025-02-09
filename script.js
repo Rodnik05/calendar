@@ -62,8 +62,21 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('New event:', eventData);
         alert('Event added successfully!');
         modal.style.display = 'none';
+        const dateInput = document.getElementById('eventDate');
+        const dateString = dateInput.value;
+
+        const dateParts = dateString.split('-');
+        const year = parseInt(dateParts[0]);
+        const month = parseInt(dateParts[1]) - 1; // Month is 0-indexed
+        const day = parseInt(dateParts[2]);
+
+        const dateObject = new Date(year, month, day);
+        console.log("dateObject:", dateObject);
+        localStorage.setItem(dateObject, eventData);
+        console.log("document.location:", document.location);
         
         // Reset form
+    
         document.getElementById('eventForm').reset();
     });
 });

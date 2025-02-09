@@ -246,6 +246,8 @@ footer {
     background-color: #f9f9f9;
     font-size: 16px;
     color: #333;
+    width: 90px;
+    height: 20px;
 }
 
 .slider-dropdown {
