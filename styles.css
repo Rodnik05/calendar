@@ -232,10 +232,14 @@ footer {
 }
 
 
-
 .move-by-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* display: flex;
     position: relative;
     display: inline-block;
+    gap: 10px; */
 }
 
 .move-by-display {

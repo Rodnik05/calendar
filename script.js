@@ -65,16 +65,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const dateInput = document.getElementById('eventDate');
         const dateString = dateInput.value;
 
-        const dateParts = dateString.split('-');
-        const year = parseInt(dateParts[0]);
-        const month = parseInt(dateParts[1]) - 1; // Month is 0-indexed
-        const day = parseInt(dateParts[2]);
-
-        const dateObject = new Date(year, month, day);
-        console.log("dateObject:", dateObject);
-        localStorage.setItem(dateObject, eventData);
-        console.log("document.location:", document.location);
-        
+        console.log("dateString:", dateString);
+        console.log("localStorage.getItem(dateString) before:", localStorage.getItem(dateString));
+        if (localStorage.getItem(dateString) === null) {
+            const eventsList = [eventData];
+            let dataAsString = JSON.stringify(eventsList);
+            localStorage.setItem(dateString, dataAsString);
+        } else {
+            const eventsList = JSON.parse(localStorage.getItem(dateString));
+            eventsList.push(eventData);
+            let dataAsString = JSON.stringify(eventsList);
+            localStorage.setItem(dateString, dataAsString);
+        }
+        console.log("localStorage.getItem(dateString) after:", localStorage.getItem(dateString));
         // Reset form
     
         document.getElementById('eventForm').reset();
