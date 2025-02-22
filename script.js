@@ -19,19 +19,17 @@ const valueDisplay_c = document.getElementById('moveByValue');
 const currentValue_c = document.getElementById('currentValue');
 const dropdown = document.getElementById('sliderDropdown');
 
-// Real-time value updates
 slider.addEventListener('input', (e) => {
     valueDisplay_c.textContent = e.target.value;
     currentValue_c.textContent = e.target.value;
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Your existing JavaScript code here
     const modal = document.getElementById('eventModal');
     const overlayBtn = document.querySelector('.overlay-button');
     const span = document.querySelector('.close');
 
-    // Event listeners for modal
+
     overlayBtn.addEventListener('click', () => {
         modal.style.display = 'block';
         document.getElementById('eventDate').valueAsDate = new Date();
@@ -47,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Handle form submission
     document.getElementById('eventForm').addEventListener('submit', (e) => {
         e.preventDefault();
         
@@ -58,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
             description: document.getElementById('eventDescription').value
         };
         
-        // Here you can add code to save the event and display it in the calendar
         console.log('New event:', eventData);
         alert('Event added successfully!');
         modal.style.display = 'none';
@@ -78,25 +74,23 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem(dateString, dataAsString);
         }
         console.log("localStorage.getItem(dateString) after:", localStorage.getItem(dateString));
-        // Reset form
     
         document.getElementById('eventForm').reset();
     });
 });
 
-// Toggle dropdown with click tracking
+
 function toggleSlider() {
   dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
 }
 
-// Close dropdown on outside click
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.move-by-container') && !e.target.closest('.slider-dropdown')) {
     dropdown.style.display = 'none';
   }
 });
 
-// Final value confirmation
+
 slider.addEventListener('change', (e) => {
     setWindowSlideIncrease(parseInt(e.target.value));
 });
@@ -105,12 +99,12 @@ renderCalendar();
 
 function renderCalendar() {
     const mainElement = document.querySelector('main');
-    mainElement.innerHTML = ''; // Clear the current calendar
+    mainElement.innerHTML = '';
 
-    // Add the day headers (Пн, Вт, Ср, etc.)
+
     const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     var window_size = getWindowSize();
-    // Add the days of the month
+
     for (let i = 0; i < window_size; i++) {
         const dayElement = document.createElement('div');
         dayElement.className = 'calendar-day';
@@ -146,31 +140,28 @@ function updateMonthYear(firstDate, window_size) {
     let lastDate = new Date(firstDate);
     lastDate.setDate(firstDate.getDate() + window_size - 1);
 
-    // Get the elements
     const firstDateButton = document.getElementById('firstDateButton');
     const lastDateButton = document.getElementById('lastDateButton');
 
-    // Update the text of the buttons
     firstDateButton.textContent = `${firstDate.getDate()} ${monthNames[firstDate.getMonth()]} ${firstDate.getFullYear()}`;
     lastDateButton.textContent = `${lastDate.getDate()} ${monthNames[lastDate.getMonth()]} ${lastDate.getFullYear()}`;
 
-    // Add event listeners to the buttons
     firstDateButton.onclick = () => {
-        alert(`First Date: ${firstDate.toDateString()}`); // Replace with your logic
+        alert(`First Date: ${firstDate.toDateString()}`);
     };
 
     lastDateButton.onclick = () => {
-        alert(`Last Date: ${lastDate.toDateString()}`); // Replace with your logic
+        alert(`Last Date: ${lastDate.toDateString()}`);
     };
 }
 
 function slideNext() {
-    firstDate.setDate(firstDate.getDate() + window_slide_increase); // Move to the next day
+    firstDate.setDate(firstDate.getDate() + window_slide_increase);
     renderCalendar();
 }
 
 function slidePrev() {
-    firstDate.setDate(firstDate.getDate() - window_slide_increase); // Move to the previous day
+    firstDate.setDate(firstDate.getDate() - window_slide_increase);
     renderCalendar();
 }
 
